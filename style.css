@@ -1,0 +1,35 @@
+/*
+Theme Name: My Theme
+Theme URI: 
+Author: Vương Hoàng Hiếu
+Author URI: http://localhost/WordPress
+Description: My Theme
+Requires at least: 6.0
+Tested up to: 6.3
+Requires PHP: 5.7
+Version: 1.0.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: my-theme
+Tags: woocommerce
+*/
+
+.breadcrumb-section-cus {
+    padding: 80px 0;
+}
+
+.comments-list-wrap-cus {
+    margin: 50px 0px;
+}
+
+.pagination-wrap ul li span.current{
+    background-color: #F28123;
+    color: #6f6f6f;
+    font-size: 15px;
+    display: inline-block;
+    padding: 8px 14px;
+    border-radius: 5px;
+    margin: 3px;
+    font-weight: 600;
+    border-radius: 50px
+}
