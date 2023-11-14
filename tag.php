@@ -1,7 +1,7 @@
 <?php
-$tag_query_name = TAG_QUERY_NAME;
-$page_new_name = PAGE_NEW_NAME;
-$term = get_queried_object();
-$slug = $term->slug;
-get_template_part("page", $page_new_name, array($tag_query_name => $slug));
+get_header();
+$tag = get_the_tags();
+get_template_part("breadcrumb", "", array("p"=> $tag[0]->description, "h" => $tag[0]->name));
+get_template_part("blogs-grid");
+get_footer();
 ?>

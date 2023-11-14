@@ -2,19 +2,10 @@
 get_header();
 ?>
 
-<!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg breadcrumb-section-cus">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 offset-lg-2 text-center">
-                <div class="breadcrumb-text">
-                    <h1>Single Article</h1>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- end breadcrumb section -->
+<?php
+global $post;
+get_template_part("breadcrumb", "", array("p"=> 'READ THE DETAILS', "h" => $post->post_title));
+?>
 
 <!-- single article section -->
 <div class="mt-80 mb-80">
@@ -28,6 +19,9 @@ get_header();
                         the_post();
                         ?>
                         <div class="single-article-text">
+                            <div class="single-artcile-bg-cus">
+                                <img src="<?php echo get_the_post_thumbnail_url(); ?>"/>
+                            </div>
                             <p class="blog-meta">
                                 <span class="author"><i class="fas fa-user"></i>
                                     <?php echo get_the_author(); ?>
