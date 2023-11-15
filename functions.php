@@ -1,5 +1,10 @@
 <?php
 
+function mytheme_add_woocommerce_support() {
+	add_theme_support( 'woocommerce' );
+}
+add_action( 'after_setup_theme', 'mytheme_add_woocommerce_support' );
+
 function wpdocs_set_comment_form_defaults( $defaults ) {
 	//Here you are able to change the $defaults[]
 	//For example: 
