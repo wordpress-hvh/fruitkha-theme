@@ -1,5 +1,44 @@
 <?php
 
+function wpdocs_set_comment_form_defaults( $defaults ) {
+	//Here you are able to change the $defaults[]
+	//For example: 
+	$defaults['title_reply'] = __( '<h4>Leave a comment</h4>' );
+	return $defaults;
+}
+add_filter( 'comment_form_defaults', 'wpdocs_set_comment_form_defaults' );
+
+/**
+ * Move the comment text field to the bottom.
+ *
+ * @see 	https://developer.wordpress.org/reference/hooks/comment_form_fields/
+ * @param  	array  $fields 		The comment fields..
+ * @return 	array
+ */
+function prefix_move_comment_field_to_bottom($fields)
+{
+    $commenter = wp_get_current_commenter();
+    // What fields you want to control.
+    $comment_field_cookies = $fields['cookies'];
+
+    // The fields you want to unset (remove).
+    unset($fields['author']);
+    unset($fields['email']);
+    unset($fields['url']);
+    unset($fields['comment']);
+    unset($fields['cookies']);
+
+    // Display the fields to your own taste.
+    // The order in which you place them will determine in what order they are displayed.
+    $fields['author'] = '<p><input type="text" id="author" name="author" required="required" placeholder="Your Name *" value="'. esc_attr($commenter['comment_author']) .'">';
+    $fields['email'] = '<input type="email" id="email" name="email" required="required" placeholder="Your Email *" value="'. esc_attr($commenter['comment_author_email']) .'"></p>';
+    $fields['comment'] = '<p class="comment-form-comment"><textarea name="comment" id="comment" cols="30" rows="10" required="required" placeholder="Your Message *"></textarea></p>';
+    $fields['cookies'] = $comment_field_cookies;
+    return $fields;
+
+}
+add_filter('comment_form_fields', 'prefix_move_comment_field_to_bottom', 10, 1);
+
 function modify_posts_per_page($query)
 {
     if (!is_admin() && ($query->is_tax("category") || $query->is_tax("tag"))) {

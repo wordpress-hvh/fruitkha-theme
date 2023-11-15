@@ -1,10 +1,6 @@
 <?php
 get_header();
-?>
-
-<?php
-global $post;
-get_template_part("breadcrumb", "", array("p"=> 'READ THE DETAILS', "h" => $post->post_title));
+get_template_part("breadcrumb", "", array("p" => 'READ THE DETAILS', "h" => "Single Article"));
 ?>
 
 <!-- single article section -->
@@ -20,13 +16,15 @@ get_template_part("breadcrumb", "", array("p"=> 'READ THE DETAILS', "h" => $post
                         ?>
                         <div class="single-article-text">
                             <div class="single-artcile-bg-cus">
-                                <img src="<?php echo get_the_post_thumbnail_url(); ?>"/>
+                                <img src="<?php echo get_the_post_thumbnail_url(); ?>" />
                             </div>
                             <p class="blog-meta">
                                 <span class="author"><i class="fas fa-user"></i>
                                     <?php echo get_the_author(); ?>
                                 </span>
-                                <span class="date"><i class="fas fa-calendar"></i> <?php echo get_the_date("d F, y") ?></span>
+                                <span class="date"><i class="fas fa-calendar"></i>
+                                    <?php echo get_the_date("d F, y") ?>
+                                </span>
                             </p>
                             <h2>
                                 <?php echo the_title(); ?>
@@ -35,14 +33,14 @@ get_template_part("breadcrumb", "", array("p"=> 'READ THE DETAILS', "h" => $post
                         </div>
 
                     <?php endwhile; // End of the loop. ?>
-                    <?php comments_template( '', true ); ?>
+                    <?php comments_template('', true); ?>
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="sidebar-section">
                     <div class="recent-posts">
                         <h4>Recent Posts</h4>
-                        <?php 
+                        <?php
                         $posts_per_page = SINGLE_POSTS_PER_PAGE;
                         $args_query = array(
                             'post_type' => 'post',
@@ -56,14 +54,18 @@ get_template_part("breadcrumb", "", array("p"=> 'READ THE DETAILS', "h" => $post
                         if ($result->have_posts()):
                             ?>
                             <ul>
-                            <?php
-                            while ($result->have_posts()): $result->the_post();
-                            ?>
+                                <?php
+                                while ($result->have_posts()):
+                                    $result->the_post();
+                                    ?>
 
-<li><a href="<?php echo the_permalink(); ?>"><?php echo the_title(); ?></a></li>
-                            
-                        <?php endwhile; ?> </ul>
-                        <?php endif;?>
+                                    <li><a href="<?php echo the_permalink(); ?>">
+                                            <?php echo the_title(); ?>
+                                        </a></li>
+
+                                <?php endwhile; ?>
+                            </ul>
+                        <?php endif; ?>
                     </div>
                     <div class="archive-posts">
                         <h4>Archive Posts</h4>
@@ -97,7 +99,9 @@ get_template_part("breadcrumb", "", array("p"=> 'READ THE DETAILS', "h" => $post
                                 <?php
                                 foreach ($posttags as $tag) {
                                     ?>
-                                    <li><a href="<?php echo get_tag_link($tag) ?>"><?php echo $tag->name; ?></a></li>
+                                    <li><a href="<?php echo get_tag_link($tag) ?>">
+                                            <?php echo $tag->name; ?>
+                                        </a></li>
                                     <?php
                                 }
                                 ?>
