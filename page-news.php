@@ -1,7 +1,5 @@
 <?php
-get_header();
 
-echo 'page-news';
-
-get_footer();
+get_template_part("testa", "category");
+echo "OK";
 ?>
