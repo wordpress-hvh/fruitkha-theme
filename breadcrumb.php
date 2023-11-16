@@ -12,7 +12,7 @@ if (isset($args)) {
 ?>
 
 <!-- breadcrumb-section -->
-<div class="breadcrumb-section breadcrumb-bg">
+<div class="breadcrumb-section breadcrumb-bg breadcrumb-bg-cus">
     <div class="container">
         <div class="row">
             <div class="col-lg-8 offset-lg-2 text-center">

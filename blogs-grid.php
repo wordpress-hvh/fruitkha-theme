@@ -1,5 +1,7 @@
+
+
 <!-- latest news -->
-<div class="latest-news mt-150 mb-150">
+<div class="latest-news mt-100 mb-100">
     <div class="container">
         <div class="row">
             <?php while (have_posts()):

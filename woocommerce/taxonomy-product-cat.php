@@ -18,5 +18,6 @@
 if ( ! defined( 'ABSPATH' ) ) {
 	exit; // Exit if accessed directly.
 }
-
+//$paged = get_query_var("paged") ? get_query_var("paged") : 1;
+//print_r($paged);
 wc_get_template( 'archive-product.php' );

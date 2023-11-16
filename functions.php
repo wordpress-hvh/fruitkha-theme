@@ -1,5 +1,16 @@
 <?php
 
+add_filter( 'loop_shop_per_page', function () {
+    return PRODUCT_POSTS_PER_PAGE;
+});
+
+// function modify_posts_per_page($query)
+// {
+//     $query->set('posts_per_page', 2);
+// }
+
+// add_action('pre_get_posts', 'modify_posts_per_page');
+
 function mytheme_add_woocommerce_support() {
 	add_theme_support( 'woocommerce' );
 }
@@ -43,15 +54,6 @@ function prefix_move_comment_field_to_bottom($fields)
 
 }
 add_filter('comment_form_fields', 'prefix_move_comment_field_to_bottom', 10, 1);
-
-function modify_posts_per_page($query)
-{
-    if (!is_admin() && ($query->is_tax("category") || $query->is_tax("tag"))) {
-        $query->set('posts_per_page', 2);
-    }
-}
-
-add_action('pre_get_posts', 'modify_posts_per_page');
 
 function my_theme_comment($comment, $args, $depth)
 {
